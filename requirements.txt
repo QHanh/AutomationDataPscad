@@ -1,0 +1,6 @@
+streamlit
+pandas
+xlsxwriter
+scipy
+pypiwin32
+Pillow
