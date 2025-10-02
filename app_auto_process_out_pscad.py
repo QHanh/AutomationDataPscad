@@ -98,7 +98,7 @@ def process_and_generate_files(uploaded_files, temp_dir):
     chart.set_y_axis({'name': 'Impedance (Ohms)', 'name_font': {'name': 'Times New Roman', 'size': 9, 'bold': True}, 'num_font': {'name': 'Times New Roman', 'size': 9}})
     chart.set_legend({'position': 'top', 'font': {'name': 'Times New Roman', 'size': 9}})
     chart.set_style(15)
-    worksheet.insert_chart('E2', chart, {'x_scale': 1.2, 'y_scale': 1.2})
+    worksheet.insert_chart('E2', chart, {'x_scale': 2, 'y_scale': 2})
     workbook.close()
 
     all_png_path = os.path.join(temp_dir, "AllData.png")
@@ -140,6 +140,18 @@ def save_excel_graph_as_png(input_excel_path, output_png_path):
                 if image:
                     image.save(output_png_path, 'PNG')
                     break
+        # for shape in sheet.Shapes:
+        #     if "Chart" in shape.Name:
+        #         chart_obj = shape.Chart
+        #         chart_obj.Export(output_png_path, FilterName='PNG')
+        #         break
+
+        # # Option: upscale ảnh
+        # from PIL import Image
+        # img = Image.open(output_png_path)
+        # new_size = (img.width*2, img.height*2)
+        # img = img.resize(new_size, Image.LANCZOS)
+        # img.save(output_png_path, dpi=(300, 300))
         wb.Close(SaveChanges=False)
     except Exception as e:
         st.error(f"Lỗi khi xử lý Excel: {e}")
