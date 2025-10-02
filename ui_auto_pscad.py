@@ -35,7 +35,7 @@ if file_name:
         )
 
         # --- Lấy tất cả component ---
-        components = pscad_project.find_all()
+        components = pscad_project.find_all("resistor")
         comp_options = {f"{c.label} ({c.definition}) [IID={c.iid}]": c for c in components}
 
         st.subheader("Chọn component để chỉnh tham số")
