@@ -18,6 +18,12 @@ with mhi.pscad.application() as pscad:
     pscad_project.parameters(time_step="50")
     pscad_project.parameters(sample_step="50")
 
+    components = pscad_project.find_all()
+
+    print("Danh sách component trong project:")
+    for comp in components:
+        print(f"IID={comp.iid}, Label={comp.label}, Type={comp.definition}")
+    
     # Lấy component theo ID (ví dụ: resistor)
     resistor = pscad_project.component(776720729)
 

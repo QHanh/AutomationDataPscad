@@ -4,3 +4,4 @@ xlsxwriter
 scipy
 pypiwin32
 Pillow
+mhi

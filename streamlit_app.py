@@ -11,12 +11,6 @@ import time
 
 SESSION_RESULT_KEY = "processing_result"
 
-# COLORS = [
-#     '#FF0000', '#0000FF', '#008000', '#FFA500', '#800080', '#A52A2A', '#00FFFF',
-#     '#FF00FF', '#00FF00', '#FFFF00', '#800000', '#000080', '#008080', '#808000',
-#     '#808080', '#C0C0C0', '#FF6347', '#4682B4', '#32CD32', '#FFD700', '#DA70D6'
-# ]
-
 COLORS = ["#0072BD", "#D95319", "#EDB120", "#7E2F8E", "#77AC30", "#4DBEEE", "#A2142F"]
 
 def convert_out_to_csv(out_file_path, csv_file_path):
