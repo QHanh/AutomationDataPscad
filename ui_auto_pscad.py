@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import os
 
 # --- Đường dẫn chứa project PSCAD ---
-BASE_PATH = os.path.abspath('')  # bạn có thể đổi sang thư mục cố định
+BASE_PATH = os.path.abspath('')
 PROJECT_FILES = [f for f in os.listdir(BASE_PATH) if f.endswith(".pscx")]
 
 st.title("PSCAD Automation Dashboard")
@@ -62,11 +62,11 @@ if file_name:
             results = {}
             for i in range(1, num_runs + 1):
                 out_file = f"Run_{i}"
-                pscad_project.parameters(PlotType="3", output_filename=out_file)  # dùng CSV
+                pscad_project.parameters(PlotType="OUT", output_filename=out_file)
                 pscad_project.run()
 
                 # Đọc dữ liệu
-                csv_path = os.path.join(BASE_PATH, f"{project_name}.if12", f"{out_file}_01.csv")
+                csv_path = os.path.join(BASE_PATH, f"{project_name}.if12", f"{out_file}_01.out")
                 df = pd.read_csv(csv_path, delimiter=r"\s+", header=None, skiprows=1)
                 time = df.iloc[:, 0]
                 current = df.iloc[:, 1]
