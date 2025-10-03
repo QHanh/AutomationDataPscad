@@ -36,7 +36,14 @@ if file_name:
 
         # --- Lấy tất cả component ---
         components = pscad_project.find_all('P_inv')
-        comp_options = {f"{c.label} ({c.definition}) [IID={c.iid}]": c for c in components}
+        comp_options = {}
+        for c in components:
+            label = getattr(c, "label", None)
+            name = getattr(c, "name", None)
+            definition = getattr(c, "definition", "UnknownDef")
+            iid = getattr(c, "iid", "N/A")
+            display = f"{label or name or definition} [IID={iid}]"
+            comp_options[display] = c
 
         st.subheader("Chọn component để chỉnh tham số")
         selected_label = st.selectbox("Component:", list(comp_options.keys()))

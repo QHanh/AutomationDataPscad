@@ -5,27 +5,30 @@ import os
 
 # --- Đường dẫn file PSCAD ---
 file_path = os.path.abspath('') + "\\"
-file_name = "PSCAD_Automation"
+file_name = "main"
 
 # --- Kết nối với PSCAD ---
 with mhi.pscad.application() as pscad:
     # Mở project .pscx
     pscad.load(file_path + file_name + ".pscx")
     pscad_project = pscad.project(file_name)
+    pscad_project.name
+
+    pscad.create_case
 
     # Cấu hình tham số mô phỏng
     pscad_project.parameters(time_duration="0.1")
     pscad_project.parameters(time_step="50")
     pscad_project.parameters(sample_step="50")
 
-    components = pscad_project.find_all()
+    # components = pscad_project.find_all()
 
-    print("Danh sách component trong project:")
-    for comp in components:
-        print(f"IID={comp.iid}, Label={comp.label}, Type={comp.definition}")
+    # print("Danh sách component trong project:")
+    # for comp in components:
+    #     print(f"IID={comp.iid}, Label={comp.label}, Type={comp.definition}")
     
     # Lấy component theo ID (ví dụ: resistor)
-    resistor = pscad_project.component(776720729)
+    resistor = pscad_project.component(807803256)
 
     # Chạy 5 lần mô phỏng với các giá trị khác nhau
     for i in range(5):
@@ -33,7 +36,7 @@ with mhi.pscad.application() as pscad:
         pscad_project.parameters(PlotType="1", output_filename=f"Output{i+1}")
 
         # Gán giá trị điện trở thay đổi theo vòng lặp
-        resistor.parameters(Name="R", R=f"{2*(i+1)} [ohm]")
+        # resistor.parameters(Name="R", R=f"{2*(i+1)} [ohm]")
 
         # Chạy mô phỏng
         pscad_project.run()

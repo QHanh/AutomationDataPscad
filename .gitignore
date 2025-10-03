@@ -1,3 +1,7 @@
 *.gf42/
 *.pscx
 *.psmx
+Generate*
+*.xlsx
+*.out
+*.csv
